@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Fun Facts Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Fun Facts Generator</h1>
+        <p id="fun-fact">Click the button to generate a fun fact about yourself!</p>
+        <button id="generate-fact">Generate Fun Fact</button>
+        <button id="add-fact">Add Your Own Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "I love hiking and have traveled to five national parks.",
+            "I am an avid reader and read around 20 books per year.",
+            "I once baked a 3-tiered cake for a family gathering!",
+            "I speak three languages fluently.",
+            "I’m learning to play the guitar in my free time."
+        ];
+
+        const funFactElement = document.getElementById('fun-fact');
+        const generateFactButton = document.getElementById('generate-fact');
+        const addFactButton = document.getElementById('add-fact');
+
+        function generateRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            funFactElement.textContent = facts[randomIndex];
+        }
+
+        function addCustomFact() {
+            const userFact = prompt("Enter your fun fact:");
+            if (userFact) {
+                facts.push(userFact);
+                alert("Your fun fact has been added!");
+            }
+        }
+
+        generateFactButton.addEventListener('click', generateRandomFact);
+        addFactButton.addEventListener('click', addCustomFact);
+    </script>
+</body>
+</html>
